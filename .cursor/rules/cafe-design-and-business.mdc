@@ -1,0 +1,20 @@
+---
+description: All UI and structure must follow frontend-agency and cafe-business skills
+alwaysApply: true
+---
+
+# Cafe project: design and business skills
+
+For this repository, **all UI, layout, pages, and content** must follow these two skill files. Do not deviate unless the user explicitly instructs otherwise.
+
+## Authority files
+
+1. **frontend-agency.skill.md** — Premium UI, design system (colors, typography, layout, components, motion), responsive rules, section structure.
+2. **cafe-business.skill.md** — Conversion-focused structure, mandatory sections (Hero, About, Menu preview, Reservation, Gallery, Reviews, Offers, Location & Contact, Sticky CTA), CTAs, local SEO.
+
+## When to use them
+
+- **Changing or adding UI, layout, or components:** Read `frontend-agency.skill.md` first and apply its design system (palette, type scale, button/card/navbar rules, motion).
+- **Changing or adding pages, sections, or copy:** Read `cafe-business.skill.md` first and apply its structure (section order, CTAs, reservation flow, mobile sticky CTA).
+
+Treat both files as the single source of truth. When in doubt, read the relevant skill file and align the implementation to it.

@@ -1,0 +1,40 @@
+export const menuCategories = ['Coffee', 'Tea', 'Snacks', 'Desserts', 'Specials']
+
+export const menuItems = [
+  // Coffee
+  { id: 'c1', category: 'Coffee', name: 'Filter Kaapi', description: 'South Indian slow-drip filter coffee, strong and aromatic.', price: '₹ 80', image: 'https://media.istockphoto.com/id/1426307970/photo/south-indian-filter-coffee-served-in-a-traditional-tumbler-or-cup-over-roasted-raw-beans.jpg?s=2048x2048&w=is&k=20&c=tWHdcnOmmsJRfqFgOkPMU77MyF-gifiUaXetWq6yHuM=', veg: true },
+  { id: 'c2', category: 'Coffee', name: 'Cold Brew', description: '24-hour steeped single-origin, served over ice.', price: '₹ 180', image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&h=400&fit=crop', veg: true },
+  { id: 'c3', category: 'Coffee', name: 'Americano', description: 'Double shot espresso with hot water.', price: '₹ 120', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop', veg: true },
+  { id: 'c4', category: 'Coffee', name: 'Cappuccino', description: 'Espresso with steamed milk and a layer of foam.', price: '₹ 150', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&h=400&fit=crop', veg: true },
+  { id: 'c5', category: 'Coffee', name: 'Latte', description: 'Smooth espresso with velvety steamed milk.', price: '₹ 160', image: 'https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=600&h=400&fit=crop', veg: true },
+  { id: 'c6', category: 'Coffee', name: 'Mocha', description: 'Chocolate and espresso with steamed milk.', price: '₹ 170', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&h=400&fit=crop', veg: true },
+  { id: 'c7', category: 'Coffee', name: 'Espresso', description: 'Single or double shot, pure and intense.', price: '₹ 90', image: 'https://images.unsplash.com/photo-1510707577715-737f0c5d9040?w=600&h=400&fit=crop', veg: true },
+  { id: 'c8', category: 'Coffee', name: 'Iced Latte', description: 'Espresso and cold milk over ice.', price: '₹ 170', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=400&fit=crop', veg: true },
+  // Tea
+  { id: 't1', category: 'Tea', name: 'Masala Chai', description: 'House blend with cardamom, ginger and spices.', price: '₹ 60', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=600&h=400&fit=crop', veg: true },
+  { id: 't2', category: 'Tea', name: 'Ginger Chai', description: 'Strong tea with fresh ginger and lemon.', price: '₹ 70', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&h=400&fit=crop', veg: true },
+  { id: 't3', category: 'Tea', name: 'Green Tea', description: 'Jasmine or plain, hot or iced.', price: '₹ 80', image: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=400&fit=crop', veg: true },
+  { id: 't4', category: 'Tea', name: 'Earl Grey', description: 'Bergamot black tea, classic and refined.', price: '₹ 90', image: 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=600&h=400&fit=crop', veg: true },
+  { id: 't5', category: 'Tea', name: 'Kashmiri Kahwa', description: 'Saffron, almonds and green tea.', price: '₹ 120', image: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=400&fit=crop', veg: true },
+  { id: 't6', category: 'Tea', name: 'Iced Peach Tea', description: 'Cold-brewed black tea with peach syrup.', price: '₹ 100', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=400&fit=crop', veg: true },
+  // Snacks
+  { id: 's1', category: 'Snacks', name: 'Avocado Toast', description: 'Sourdough, smashed avocado, cherry tomatoes and feta.', price: '₹ 220', image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=600&h=400&fit=crop', veg: true },
+  { id: 's2', category: 'Snacks', name: 'Croissant', description: 'Buttery, flaky, plain or with jam.', price: '₹ 120', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&h=400&fit=crop', veg: true },
+  { id: 's3', category: 'Snacks', name: 'Veg Sandwich', description: 'Multigrain bread, cucumber, tomato, cheese and greens.', price: '₹ 140', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&h=400&fit=crop', veg: true },
+  { id: 's4', category: 'Snacks', name: 'Chicken Wrap', description: 'Grilled chicken, lettuce, mayo and tortilla.', price: '₹ 200', image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&h=400&fit=crop', veg: false },
+  { id: 's5', category: 'Snacks', name: 'Cheese Toast', description: 'Melted cheddar on toasted sourdough.', price: '₹ 130', image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&h=400&fit=crop', veg: true },
+  { id: 's6', category: 'Snacks', name: 'Hummus & Pita', description: 'House hummus with warm pita and olive oil.', price: '₹ 160', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop', veg: true },
+  // Desserts
+  { id: 'd1', category: 'Desserts', name: 'Chocolate Brownie', description: 'Warm brownie with walnuts and vanilla ice cream.', price: '₹ 150', image: 'https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=600&h=400&fit=crop', veg: true },
+  { id: 'd2', category: 'Desserts', name: 'Tiramisu', description: 'Classic mascarpone and coffee-soaked ladyfingers.', price: '₹ 220', image: 'https://images.unsplash.com/photo-1571877227200-a0d59ea674f5?w=600&h=400&fit=crop', veg: true },
+  { id: 'd3', category: 'Desserts', name: 'Banana Bread', description: 'Fresh-baked with walnuts and a hint of cinnamon.', price: '₹ 130', image: 'https://images.unsplash.com/photo-1586444241194-3215f25d0dbb?w=600&h=400&fit=crop', veg: true },
+  { id: 'd4', category: 'Desserts', name: 'Cheesecake', description: 'New York style with berry compote.', price: '₹ 200', image: 'https://images.unsplash.com/photo-1533134242443-d4ea4b3c4a64?w=600&h=400&fit=crop', veg: true },
+  { id: 'd5', category: 'Desserts', name: 'Ice Cream Scoop', description: 'Vanilla, chocolate or seasonal flavour.', price: '₹ 100', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=400&fit=crop', veg: true },
+  { id: 'd6', category: 'Desserts', name: 'Carrot Cake', description: 'Spiced cake with cream cheese frosting.', price: '₹ 180', image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&h=400&fit=crop', veg: true },
+  // Specials
+  { id: 'sp1', category: 'Specials', name: 'Breakfast Combo', description: 'Filter coffee + avocado toast + fruit bowl.', price: '₹ 350', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop', veg: true },
+  { id: 'sp2', category: 'Specials', name: 'Coffee & Brownie', description: 'Any hot coffee with a chocolate brownie.', price: '₹ 220', image: 'https://images.unsplash.com/photo-1495474473367-84d604b4d427?w=600&h=400&fit=crop', veg: true },
+  { id: 'sp3', category: 'Specials', name: 'Chai & Samosa', description: 'Two samosas with masala chai.', price: '₹ 120', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop', veg: true },
+  { id: 'sp4', category: 'Specials', name: 'Cold Brew Flight', description: 'Three small pours: light, medium, dark roast.', price: '₹ 280', image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&h=400&fit=crop', veg: true },
+  { id: 'sp5', category: 'Specials', name: 'Date Night Duo', description: 'Two lattes + tiramisu + brownie to share.', price: '₹ 550', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop', veg: true },
+]
