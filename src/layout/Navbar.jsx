@@ -19,8 +19,8 @@ export default function Navbar() {
   return (
     <>
       {/* Main Navbar */}
-      <nav className="sticky top-0 z-40 flex min-h-[72px] items-center border-b border-neutral-200/80 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-4 md:px-6">
+      <nav className="sticky top-0 z-40 flex min-h-18 items-center border-b border-neutral-200/80 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-300 items-center justify-between px-4 md:px-6">
           
           {/* Logo */}
           <Link
@@ -81,7 +81,7 @@ export default function Navbar() {
 
       {/* Sidebar */}
  <div
-  className={`fixed top-0 right-0 z-50 h-full w-80 bg-gradient-to-b from-[#ffffff] to-[#f8f6f3] shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+  className={`fixed top-0 right-0 z-50 h-full w-80 bg-linear-to-b from-[#ffffff] to-[#f8f6f3] shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
     isOpen ? "translate-x-0" : "translate-x-full"
   }`}
 >
@@ -109,12 +109,12 @@ export default function Navbar() {
           onClick={() => setIsOpen(false)}
           className="group relative text-lg font-medium text-neutral-700 transition-all duration-300"
         >
-          <span className="relative z-10 group-hover:text-[#4a3728]">
+          <span className="relative z-10 group-hover:text-accent">
             {label}
           </span>
 
           {/* Elegant underline animation */}
-          <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#4a3728] transition-all duration-300 group-hover:w-full"></span>
+          <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
         </Link>
       </li>
     ))}

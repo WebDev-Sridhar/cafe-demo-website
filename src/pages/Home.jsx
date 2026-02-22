@@ -43,7 +43,7 @@ export default function Home() {
           style={{ backgroundImage: `url(${HERO_BG})` }}
         />
         <div className="absolute inset-0 bg-[#0F172A]/75" />
-        <div className="relative mx-auto flex min-h-[85vh] max-w-[1200px] flex-col justify-center px-4 py-20 md:min-h-[90vh] md:px-6 md:py-28">
+        <div className="relative mx-auto flex min-h-[85vh] max-w-300 flex-col justify-center px-4 py-20 md:min-h-[90vh] md:px-6 md:py-28">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#27b371]">
             Premium cafe · Chennai
           </p>
@@ -55,7 +55,7 @@ export default function Home() {
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-4">
             <Link to="/menu">
-              <Button variant="primary" className="px-7 py-3.5 text-lg shadow-lg shadow-[#4a3728]/20 hover:shadow-xl hover:shadow-[#4a3728]/25">
+              <Button variant="primary" className="px-7 py-3.5 text-lg shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/25">
                 View Menu
               </Button>
             </Link>
@@ -93,7 +93,7 @@ export default function Home() {
 
       {/* 2. About preview */}
       <section className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32">
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Our story
           </p>
@@ -113,7 +113,7 @@ export default function Home() {
 
       {/* 3. Featured menu */}
       <section className="py-24 md:py-32 bg-[#f3f2f0]" >
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Menu
           </p>
@@ -132,14 +132,14 @@ export default function Home() {
                 </div>
                 <div className="p-5 md:p-6 text-center">
                   <h3 className="font-semibold text-[#111827]">{item.name}</h3>
-                  <p className="mt-1 text-lg font-medium text-[#4a3728]">{item.price}</p>
+                  <p className="mt-1 text-lg font-medium text-accent">{item.price}</p>
                 </div>
               </Card>
             ))}
           </div>
           <div className="mt-14 text-center">
             <Link to="/menu">
-              <Button variant="outline" className="shadow-md shadow-[#4a3728]/25 hover:shadow-lg hover:shadow-[#4a3728]/30">
+              <Button variant="outline" className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30">
               Explore Today’s Menu →
               </Button>
             </Link>
@@ -149,7 +149,7 @@ export default function Home() {
 
       {/* 4. Gallery preview */}
       <section className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32" >
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Gallery
           </p>
@@ -182,7 +182,7 @@ export default function Home() {
 
       {/* 5. Reviews */}
       <section className="py-24 md:py-32 bg-[#f3f2f0]">
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Reviews
           </p>
@@ -203,7 +203,7 @@ export default function Home() {
 
       {/* 6. Location */}
       <section id="location" className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32">
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Find us
           </p>
@@ -211,7 +211,7 @@ export default function Home() {
             Location & hours
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-5">
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 md:col-span-3">
+            <div className="aspect-4/3 overflow-hidden rounded-2xl bg-neutral-300 md:col-span-3">
               <div className="flex h-full w-full items-center justify-center text-neutral-500">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
@@ -221,7 +221,7 @@ export default function Home() {
               <p className="font-medium text-[#111827]">{cafe.address}</p>
               <a
                 href={`tel:${cafe.phone.replace(/\s/g, '')}`}
-                className="mt-4 inline-block font-medium text-[#4a3728] hover:underline"
+                className="mt-4 inline-block font-medium text-accent hover:underline"
               >
                 {cafe.phone}
               </a>
@@ -230,12 +230,12 @@ export default function Home() {
                 <p><span className="font-medium text-[#111827]">Sat – Sun</span> {cafe.hours.weekend}</p>
               </div>
               <a
-                href="https://www.google.com/maps/place/The+Brew+Room/@12.981013,80.2363116,15z/data=!4m6!3m5!1s0x3a5267237170378f:0x168c99f897f4a9d9!8m2!3d12.981013!4d80.2363116!16s%2Fg%2F11b77gjg2h?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D"
+                href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-block"
               >
-                <Button variant="primary" className="shadow-md shadow-[#4a3728]/25 hover:shadow-lg hover:shadow-[#4a3728]/30">
+                <Button variant="primary" className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30">
                   Get Directions
                 </Button>
               </a>

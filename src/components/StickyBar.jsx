@@ -35,7 +35,7 @@ export default function StickyBar() {
         href={WHATSAPP_GENERAL}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex flex-col items-center gap-1 bg-white py-3 text-center text-xs font-semibold text-[#111827] transition-colors duration-200 active:bg-neutral-50 hover:bg-[#4a3728] hover:text-white"
+        className="flex flex-col items-center gap-1 bg-white py-3 text-center text-xs font-semibold text-[#111827] transition-colors duration-200 active:bg-neutral-50 hover:bg-accent hover:text-white"
       >
         <svg
           className="h-5 w-5"
@@ -50,7 +50,7 @@ export default function StickyBar() {
       <button
         type="button"
         onClick={openReservation}
-        className="flex flex-col items-center gap-1 bg-[#4a3728] py-3 text-center text-xs font-bold text-white transition-all duration-200 active:bg-[#3d2914] hover:bg-[#3d2914] hover:shadow-lg hover:shadow-[#4a3728]/30"
+        className="flex flex-col items-center gap-1 bg-accent py-3 text-center text-xs font-bold text-white transition-all duration-200 active:bg-accent-hover hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/50"
       >
         <svg
           className="h-5 w-5"

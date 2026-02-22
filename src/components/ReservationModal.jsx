@@ -132,7 +132,7 @@ export default function ReservationModal({ isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={handleClose} title="Reserve a table">
       {submitted ? (
         <div className="space-y-6">
-          <div className="rounded-xl bg-[#4a3728]/10 p-5 text-[#3d2914]">
+          <div className="rounded-xl bg-accent/10p-5 text-accent-hover">
             <p className="font-semibold">Request received</p>
             <p className="mt-1 text-sm">
               We’ll confirm your table shortly. For instant confirmation, send
@@ -179,7 +179,7 @@ export default function ReservationModal({ isOpen, onClose }) {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 min={new Date().toISOString().slice(0, 10)}
-                className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+                className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                   touched.date && errors.date
                     ? "border-red-400"
                     : "border-neutral-300"
@@ -202,7 +202,7 @@ export default function ReservationModal({ isOpen, onClose }) {
                 value={form.time}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+                className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                   touched.time && errors.time
                     ? "border-red-400"
                     : "border-neutral-300"
@@ -232,7 +232,7 @@ export default function ReservationModal({ isOpen, onClose }) {
               name="guests"
               value={form.guests}
               onChange={handleChange}
-              className="mt-1.5 h-12 w-full rounded-xl border border-neutral-300 px-4 text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2"
+              className="mt-1.5 h-12 w-full rounded-xl border border-neutral-300 px-4 text-[#111827] focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2"
             >
               {GUEST_OPTIONS.map((n) => (
                 <option key={n} value={n}>
@@ -255,7 +255,7 @@ export default function ReservationModal({ isOpen, onClose }) {
               value={form.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+              className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                 touched.name && errors.name
                   ? "border-red-400"
                   : "border-neutral-300"
@@ -281,7 +281,7 @@ export default function ReservationModal({ isOpen, onClose }) {
               value={form.phone}
               onChange={handleChange}
               onBlur={handleBlur}
-              className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+              className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                 touched.phone && errors.phone
                   ? "border-red-400"
                   : "border-neutral-300"

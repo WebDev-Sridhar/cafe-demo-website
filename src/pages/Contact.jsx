@@ -63,7 +63,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
       <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
         Contact
       </p>
@@ -78,7 +78,7 @@ export default function Contact() {
           type="button"
           variant="primary"
           onClick={openReservation}
-          className="shadow-md shadow-[#4a3728]/25 hover:shadow-lg hover:shadow-[#4a3728]/30"
+          className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30"
         >
           Reserve a table
         </Button>
@@ -104,7 +104,7 @@ export default function Contact() {
             <p className="mt-3 font-medium text-[#111827]">{cafe.address}</p>
             <a
               href={PHONE_URL}
-              className="mt-2 block font-medium text-[#5c4033] hover:underline"
+              className="mt-2 block font-medium text-accent-focus hover:underline"
             >
               {cafe.phone}
             </a>
@@ -118,7 +118,7 @@ export default function Contact() {
             </a>
             <a
               href={`mailto:${cafe.email}`}
-              className="mt-1 block font-medium text-[#5c4033] hover:underline"
+              className="mt-1 block font-medium text-accent-focus hover:underline"
             >
               {cafe.email}
             </a>
@@ -158,7 +158,7 @@ export default function Contact() {
           </div>
 
           <a
-            href="https://maps.google.com"
+            href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block"
@@ -178,7 +178,7 @@ export default function Contact() {
             </p>
 
             {submitted ? (
-              <div className="mt-8 rounded-xl bg-[#4a3728]/10 p-6 text-accent-hover">
+              <div className="mt-8 rounded-xl bg-accent/10 p-6 text-accent-hover">
                 <p className="font-semibold">Message sent.</p>
                 <p className="mt-1 text-sm">Thanks for reaching out. We’ll be in touch soon.</p>
               </div>
@@ -195,7 +195,7 @@ export default function Contact() {
                     value={form.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                       touched.name && errors.name
                         ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
                         : 'border-neutral-300'
@@ -219,7 +219,7 @@ export default function Contact() {
                     value={form.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                       touched.email && errors.email
                         ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
                         : 'border-neutral-300'
@@ -243,7 +243,7 @@ export default function Contact() {
                     value={form.phone}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="mt-1.5 h-12 w-full rounded-xl border border-neutral-300 px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2"
+                    className="mt-1.5 h-12 w-full rounded-xl border border-neutral-300 px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2"
                     placeholder="+91 98765 43210"
                     autoComplete="tel"
                   />
@@ -260,7 +260,7 @@ export default function Contact() {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     rows={4}
-                    className={`mt-1.5 w-full resize-y rounded-xl border px-4 py-3 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2 ${
+                    className={`mt-1.5 w-full resize-y rounded-xl border px-4 py-3 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
                       touched.message && errors.message
                         ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
                         : 'border-neutral-300'

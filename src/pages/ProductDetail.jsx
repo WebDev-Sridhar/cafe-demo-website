@@ -10,7 +10,7 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="mx-auto max-w-[1200px] px-4 py-24 text-center">
+      <div className="mx-auto max-w-300 px-4 py-24 text-center">
         <p className="text-neutral-500">Product not found.</p>
         <Link
           to="/menu"
@@ -28,7 +28,7 @@ export default function ProductDetail() {
   )}`
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
       
       {/* Back Link */}
       <Link
@@ -115,7 +115,7 @@ export default function ProductDetail() {
     Related Items
   </h2>
 
-  <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {menuItems
       .filter(
         (item) =>
@@ -144,7 +144,7 @@ export default function ProductDetail() {
             <p className="mt-1 text-sm text-neutral-600 line-clamp-2">
               {item.description}
             </p>
-            <p className="mt-3 text-lg font-semibold text-[#4a3728]">
+            <p className="mt-3 text-lg font-semibold text-accent">
               {item.price}
             </p>
           </div>

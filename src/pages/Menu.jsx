@@ -20,7 +20,7 @@ function MenuItemCard({ item }) {
           className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105 rounded-2xl"
         />
         {item.veg && (
-          <span className="absolute right-3 top-3 rounded-md bg-white/90 px-2 py-1 text-xs font-semibold text-[#4a3728] shadow-sm">
+          <span className="absolute right-3 top-3 rounded-md bg-white/90 px-2 py-1 text-xs font-semibold text-accent shadow-sm">
             Veg
           </span>
         )}
@@ -39,7 +39,7 @@ function MenuItemCard({ item }) {
           {item.description}
         </p>
 
-        <p className="mt-3 text-lg font-semibold text-[#4a3728]">
+        <p className="mt-3 text-lg font-semibold text-accent">
           {item.price}
         </p>
 
@@ -63,7 +63,7 @@ export default function Menu() {
   const filtered = menuItems.filter((item) => item.category === activeCategory)
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
       <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
         Menu
       </p>

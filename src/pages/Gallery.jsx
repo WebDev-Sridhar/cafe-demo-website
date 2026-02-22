@@ -55,7 +55,7 @@ export default function Gallery() {
       : galleryItems.filter((item) => item.category === activeFilter)
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
       <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
         Gallery
       </p>

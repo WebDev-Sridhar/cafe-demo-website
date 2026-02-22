@@ -30,7 +30,7 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? "modal-title" : undefined}
@@ -55,7 +55,7 @@ export default function Modal({
             <button
               type="button"
               onClick={onClose}
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#5c4033] focus:ring-offset-2"
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-[#111827] focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2"
               aria-label="Close"
             >
               <svg
