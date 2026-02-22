@@ -41,14 +41,14 @@ export const galleryItems = [
     id: "g6",
     category: "Food",
     image:
-      "https://images.unsplash.com/photo-1571877227200-a0d59ea674f5?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGlyYW1pc3V8ZW58MHx8MHx8fDA%3D",
     caption: "Tiramisu",
   },
   {
     id: "g7",
     category: "Food",
     image:
-      "https://images.unsplash.com/photo-1586444241194-3215f25d0dbb?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1596241913027-34358037e159?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFuYW5hJTIwYnJlYWR8ZW58MHx8MHx8fDA%3D",
     caption: "Banana bread",
   },
   {
@@ -63,7 +63,7 @@ export const galleryItems = [
     id: "g9",
     category: "Drinks",
     image:
-      "https://images.unsplash.com/photo-1495474473367-84d604b4d427?w=600&h=600&fit=crop",
+      "https://media.istockphoto.com/id/1426307970/photo/south-indian-filter-coffee-served-in-a-traditional-tumbler-or-cup-over-roasted-raw-beans.jpg?s=2048x2048&w=is&k=20&c=tWHdcnOmmsJRfqFgOkPMU77MyF-gifiUaXetWq6yHuM=",
     caption: "Filter kaapi",
   },
   {

@@ -221,7 +221,7 @@ export default function Home() {
           </h2>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {reviews.map((review, i) => (
-              <Card key={i} className="transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+              <Card key={i} className={`bg-white rounded-2xl p-8 shadow-lg ${i % 2 === 0 ? "animate-fade-in-left" : "animate-fade-in-right"}`}>
                 <StarRating value={review.rating} />
                 <p className="mt-4 leading-relaxed text-neutral-600">{review.text}</p>
                 <p className="mt-4 font-medium text-[#111827]">— {review.name}</p>
