@@ -85,7 +85,7 @@ export default function Contact() {
       </div>
 
       {/* Map + contact info + form */}
-      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-14">
+      <div className="mt-12 grid  gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-14">
         {/* Left: Map + details */}
         <div className="space-y-8 lg:col-span-2">
           <div
@@ -93,7 +93,7 @@ export default function Contact() {
             className="aspect-4/3 overflow-hidden rounded-2xl bg-neutral-200 md:aspect-video"
           >
             <div className="flex h-full w-full items-center justify-center text-neutral-500">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin" width="600" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 
