@@ -80,35 +80,53 @@ export default function Navbar() {
       />
 
       {/* Sidebar */}
-      <div
-        className={`fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-5">
-          <span className="text-lg font-semibold text-[#111827]">
-            The Brew Room
+ <div
+  className={`fixed top-0 right-0 z-50 h-full w-80 bg-gradient-to-b from-[#ffffff] to-[#f8f6f3] shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+    isOpen ? "translate-x-0" : "translate-x-full"
+  }`}
+>
+  {/* Header */}
+  <div className="flex items-center justify-between px-8 py-6 border-b border-neutral-200">
+    <span className="text-4xl font-semibold text-[#111827] tracking-wide transition-opacity">
+      BR
+    </span>
+
+    <button
+      onClick={() => setIsOpen(false)}
+      aria-label="Close menu"
+      className="p-2 rounded-full hover:bg-neutral-200 transition"
+    >
+      <X size={22} className="text-neutral-700" />
+    </button>
+  </div>
+
+  {/* Navigation Links */}
+  <ul className="flex flex-col gap-8 px-8 py-12">
+    {navLinks.map(({ to, label }) => (
+      <li key={to}>
+        <Link
+          to={to}
+          onClick={() => setIsOpen(false)}
+          className="group relative text-lg font-medium text-neutral-700 transition-all duration-300"
+        >
+          <span className="relative z-10 group-hover:text-[#4a3728]">
+            {label}
           </span>
-          <button onClick={() => setIsOpen(false)} aria-label="Close menu">
-            <X size={24} />
-          </button>
-        </div>
 
-        <ul className="flex flex-col gap-6 px-6 py-8">
-          {navLinks.map(({ to, label }) => (
-            <li key={to}>
-              <Link
-                to={to}
-                onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-neutral-700 hover:text-[#111827]"
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
+          {/* Elegant underline animation */}
+          <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#4a3728] transition-all duration-300 group-hover:w-full"></span>
+        </Link>
+      </li>
+    ))}
+  </ul>
 
-        </ul>
-      </div>
+  {/* Bottom subtle branding */}
+
+  <div className="absolute bottom-20 left-8 text-sm text-neutral-400">
+    <hr className="border-t border-neutral-200 mx-8 my-4" />
+    Crafted with warmth ☕
+  </div>
+</div>
     </>
   )
 }

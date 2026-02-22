@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { menuItems } from '../data/menu'
+import Button from '../components/Button'
 
 export default function ProductDetail() {
   const { id } = useParams()
@@ -22,7 +23,7 @@ export default function ProductDetail() {
   }
 
   const whatsappMessage = `Hi, I’d like to order:\n\n${product.name}\nQuantity: ${quantity}\n\nPlease confirm availability.`
-  const whatsappLink = `https://wa.me/919999999999?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/916380614150?text=${encodeURIComponent(
     whatsappMessage
   )}`
 
@@ -102,9 +103,9 @@ export default function ProductDetail() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block rounded-xl bg-[#111827] px-8 py-3 text-sm font-semibold text-white transition hover:bg-black"
           >
-            Order on WhatsApp
+             <Button variant="primary" className="w-full mt-6">Order on WhatsApp</Button>
+   
           </a>
         </div>
       </div>

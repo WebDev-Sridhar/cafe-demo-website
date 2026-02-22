@@ -4,6 +4,7 @@ import Footer from './Footer'
 import StickyBar from '../components/StickyBar'
 import ReservationModal from '../components/ReservationModal'
 import { ReservationProvider, useReservation } from '../context/ReservationContext'
+import ScrollToTop from "../components/ScrollToTop"
 
 function ReservationModalWrapper() {
   const { isOpen, closeReservation } = useReservation()
@@ -14,6 +15,7 @@ export default function Layout() {
   return (
 
     <ReservationProvider>
+      <ScrollToTop />
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">

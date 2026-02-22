@@ -85,7 +85,7 @@ export default function Contact() {
       </div>
 
       {/* Map + contact info + form */}
-      <div className="mt-12 grid  gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-14">
+      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-14">
         {/* Left: Map + details */}
         <div className="space-y-8 lg:col-span-2">
           <div
@@ -112,7 +112,7 @@ export default function Contact() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 block font-medium text-[#5c4033] hover:underline"
+              className="mt-1 block font-medium text-accent-focus hover:underline"
             >
               WhatsApp chat
             </a>

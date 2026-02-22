@@ -130,7 +130,7 @@ export default function Home() {
                     className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105"
                   />
                 </div>
-                <div className="p-5 md:p-6">
+                <div className="p-5 md:p-6 text-center">
                   <h3 className="font-semibold text-[#111827]">{item.name}</h3>
                   <p className="mt-1 text-lg font-medium text-[#4a3728]">{item.price}</p>
                 </div>

@@ -17,7 +17,7 @@ function MenuItemCard({ item }) {
         <img
           src={item.image}
           alt={item.name}
-          className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105"
+          className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105 rounded-2xl"
         />
         {item.veg && (
           <span className="absolute right-3 top-3 rounded-md bg-white/90 px-2 py-1 text-xs font-semibold text-[#4a3728] shadow-sm">

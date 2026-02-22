@@ -137,7 +137,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-neutral-200 pt-6 text-sm text-neutral-400 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="my-12 border-t border-neutral-200 pt-6 text-sm text-neutral-400 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {cafe.name}. All rights reserved.
           </p>
