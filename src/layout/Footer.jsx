@@ -132,6 +132,11 @@ export default function Footer() {
                   {cafe.email}
                 </a>
               </li>
+              <li className=" items-center gap-2">
+               <p className="text-sm text-neutral-500">Mon - Fri: {cafe.hours.weekdays}</p>
+               <p className="text-sm text-neutral-500">Sat - Sun: {cafe.hours.weekend}</p>
+
+              </li>
             </ul>
           </div>
         </div>

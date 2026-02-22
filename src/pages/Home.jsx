@@ -139,8 +139,8 @@ export default function Home() {
           </div>
           <div className="mt-14 text-center">
             <Link to="/menu">
-              <Button variant="primary" className="shadow-md shadow-[#4a3728]/25 hover:shadow-lg hover:shadow-[#4a3728]/30">
-                View Full Menu
+              <Button variant="outline" className="shadow-md shadow-[#4a3728]/25 hover:shadow-lg hover:shadow-[#4a3728]/30">
+              Explore Today’s Menu →
               </Button>
             </Link>
           </div>

@@ -1,6 +1,6 @@
 export const cafe = {
   name: "The Brew Room",
-  tagline: "Where Chennai slows down.",
+  tagline: "Every cup brewed with care and community.",
   address: "12, Khader Nawaz Khan Rd, Nungambakkam, Chennai 600 034",
   phone: "+91 7904224746",
   whatsapp: "+916380614150",
