@@ -4,13 +4,12 @@ import Card from '../components/Card'
 import { useReservation } from '../context/ReservationContext'
 import { cafe, featuredMenu, galleryImages, reviews } from '../data/cafe'
 import { getWhatsAppUrl } from '../utils/whatsapp'
+import { motion } from 'framer-motion'
+import LuxuryText from "../components/LuxuryText"
+
 
 // const HERO_BG = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920&q=80'
 const HERO_BG = 'https://plus.unsplash.com/premium_photo-1661875793803-92f4c8b6ae84?q=80&w=1119&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-const FEATURED_MENU_BG = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920&q=80'
-const GALLERY_BG = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920&q=80'
-const REVIEWS_BG = 'Photo by <a href="https://unsplash.com/@clemono?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Clem Onojeghuo</a> on <a href="https://unsplash.com/photos/person-sitting-inside-restaurant-zlABb6Gke24?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
-const LOCATION_BG = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920&q=80'
 
 function StarRating({ value }) {
   return (
@@ -34,22 +33,35 @@ const WHATSAPP_ORDER = getWhatsAppUrl("Hi, I'd like to order from your menu. Can
 
 export default function Home() {
   const { openReservation } = useReservation()
+  const fadeInUp = {
+  hidden: { opacity: 0, y: 80 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+}
+
+
+  
   return (
-    <>
+    <div className="animate-fade-in-up">
+
       {/* 1. Hero */}
       <section className="relative min-h-[85vh] md:min-h-[90vh]">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${HERO_BG})` }}
-        />
+      <div
+           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+           style={{ backgroundImage: `url(${HERO_BG})`}}
+            /> 
         <div className="absolute inset-0 bg-[#0F172A]/75" />
         <div className="relative mx-auto flex min-h-[85vh] max-w-300 flex-col justify-center px-4 py-20 md:min-h-[90vh] md:px-6 md:py-28">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#27b371]">
             Premium cafe · Chennai
           </p>
-          <h1 className="max-w-[20ch] text-4xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-6xl">
-            {cafe.name}
-          </h1>
+       <LuxuryText
+  text={cafe.name}
+  className="max-w-[20ch] text-4xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-6xl"
+/>
           <p className="mt-5 max-w-[35ch] text-lg leading-relaxed text-neutral-200 md:text-xl">
             {cafe.tagline}
           </p>
@@ -92,7 +104,13 @@ export default function Home() {
       </section>
 
       {/* 2. About preview */}
-      <section className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32">
+     <motion.section
+  variants={fadeInUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32"
+>
         <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Our story
@@ -109,10 +127,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. Featured menu */}
-      <section className="py-24 md:py-32 bg-[#f3f2f0]" >
+      <section className="py-24 md:py-32 bg-[#f3f2f0] animate-fade-in-up" >
         <div className="mx-auto max-w-300 px-4 md:px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Menu
@@ -120,8 +138,19 @@ export default function Home() {
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
             Featured picks
           </h2>
-          <div className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6">
+        <motion.div
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    visible: {
+      transition: { staggerChildren: 0.2 }
+    }
+  }}
+  className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6"
+>
             {featuredMenu.map((item) => (
+              <motion.div variants={fadeInUp}>
               <Card key={item.id} className="overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="aspect-4/3 overflow-hidden rounded-lg">
                   <img
@@ -135,8 +164,9 @@ export default function Home() {
                   <p className="mt-1 text-lg font-medium text-accent">{item.price}</p>
                 </div>
               </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <div className="mt-14 text-center">
             <Link to="/menu">
               <Button variant="outline" className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30">
@@ -160,7 +190,7 @@ export default function Home() {
             {galleryImages.map((src, i) => (
               <div
                 key={i}
-                className="overflow-hidden rounded-2xl bg-neutral-200 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg aspect-4/3"
+                className="overflow-hidden   rounded-2xl bg-neutral-200 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg aspect-4/3"
               >
                 <img
                   src={src}
@@ -246,6 +276,7 @@ export default function Home() {
 
       {/* Spacer for sticky bar on mobile */}
       <div className="h-20 md:hidden" />
-    </>
+      
+    </div>
   )
 }

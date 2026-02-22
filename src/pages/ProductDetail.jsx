@@ -138,7 +138,7 @@ export default function ProductDetail() {
           </div>
 
           <div className="p-5">
-            <h3 className="text-lg font-semibold text-[#111827] group-hover:underline">
+            <h3 className="text-lg font-semibold text-[#111827]">
               {item.name}
             </h3>
             <p className="mt-1 text-sm text-neutral-600 line-clamp-2">

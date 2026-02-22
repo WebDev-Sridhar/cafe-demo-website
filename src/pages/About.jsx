@@ -13,7 +13,7 @@ const INTERIOR_IMAGES = [
 
 export default function About() {
   return (
-    <div className="mx-auto max-w-300 px-4 md:px-6 ">
+    <div className="mx-auto max-w-300 px-4 md:px-6 animate-fade-in-up">
       {/* Hero / Page title */}
       <section className="pt-16 pb-14 md:pt-24 md:pb-20">
         <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">

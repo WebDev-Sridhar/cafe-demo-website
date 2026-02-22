@@ -8,7 +8,7 @@ export const menuItems = [
   { id: 'c4', category: 'Coffee', name: 'Cappuccino', description: 'Espresso with steamed milk and a layer of foam.', price: '₹ 150', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&h=400&fit=crop', veg: true },
   { id: 'c5', category: 'Coffee', name: 'Latte', description: 'Smooth espresso with velvety steamed milk.', price: '₹ 160', image: 'https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=600&h=400&fit=crop', veg: true },
   { id: 'c6', category: 'Coffee', name: 'Mocha', description: 'Chocolate and espresso with steamed milk.', price: '₹ 170', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&h=400&fit=crop', veg: true },
-  { id: 'c7', category: 'Coffee', name: 'Espresso', description: 'Single or double shot, pure and intense.', price: '₹ 90', image: 'https://images.unsplash.com/photo-1510707577715-737f0c5d9040?w=600&h=400&fit=crop', veg: true },
+  { id: 'c7', category: 'Coffee', name: 'Espresso', description: 'Single or double shot, pure and intense.', price: '₹ 90', image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RXNwcmVzc298ZW58MHx8MHx8fDA%3D', veg: true },
   { id: 'c8', category: 'Coffee', name: 'Iced Latte', description: 'Espresso and cold milk over ice.', price: '₹ 170', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=400&fit=crop', veg: true },
   // Tea
   { id: 't1', category: 'Tea', name: 'Masala Chai', description: 'House blend with cardamom, ginger and spices.', price: '₹ 60', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=600&h=400&fit=crop', veg: true },

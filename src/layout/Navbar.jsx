@@ -52,7 +52,7 @@ export default function Navbar() {
               type="button"
               variant="primary"
               onClick={openReservation}
-              className="hidden"
+              className="hidden animate-fade-in-right"
               aria-label="Reserve a table"
             >
               Reserve

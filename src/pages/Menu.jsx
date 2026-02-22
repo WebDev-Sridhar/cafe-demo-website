@@ -30,7 +30,7 @@ function MenuItemCard({ item }) {
         
         {/* Clickable Title */}
         <Link to={`/menu/${item.id}`}>
-          <h3 className="text-lg font-semibold text-[#111827] hover:underline">
+          <h3 className="text-lg font-semibold text-[#111827]]">
             {item.name}
           </h3>
         </Link>
@@ -63,7 +63,7 @@ export default function Menu() {
   const filtered = menuItems.filter((item) => item.category === activeCategory)
 
   return (
-    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
+    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24 ">
       <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
         Menu
       </p>

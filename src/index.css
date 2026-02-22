@@ -24,7 +24,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -33,7 +33,22 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.35s ease-out forwards;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.5s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  } 
 }
 
 @keyframes modalBackdropIn {

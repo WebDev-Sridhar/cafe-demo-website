@@ -26,5 +26,6 @@ export default function Layout() {
         <ReservationModalWrapper />
       </div>
     </ReservationProvider>
+
   )
 }

@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import ProductDetail from './pages/ProductDetail'
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
