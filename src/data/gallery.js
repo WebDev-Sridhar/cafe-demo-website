@@ -176,16 +176,18 @@ export const galleryItems = [
   {
     id: "g25",
     category: "Events",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=600&fit=crop",
-    caption: "Birthday setup",
+      image:
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=600&fit=crop",
+    caption: "Team brunch",
+
   },
   {
     id: "g26",
     category: "Events",
-    image:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=600&fit=crop",
-    caption: "Team brunch",
+        image:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=600&fit=crop",
+    caption: "Birthday setup",
+  
   },
   {
     id: "g27",

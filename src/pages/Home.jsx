@@ -150,8 +150,8 @@ export default function Home() {
   className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6"
 >
             {featuredMenu.map((item) => (
-              <motion.div variants={fadeInUp}>
-              <Card key={item.id} className="overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <motion.div variants={fadeInUp} key={item.id}>
+              <Card  className="overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="aspect-4/3 overflow-hidden rounded-lg">
                   <img
                     src={item.image}

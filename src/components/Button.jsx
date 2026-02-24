@@ -1,6 +1,6 @@
 const variants = {
 primary:
-  "bg-[linear-gradient(52deg,rgba(171,124,80,1)_0%,rgba(115,70,10,1)_59%,rgba(107,50,6,1)_100%)] text-white shadow-md shadow-[#73460a]/30 hover:brightness-110 hover:shadow-lg hover:shadow-[#73460a]/40 focus:ring-[#ab7c50]",
+  "bg-[linear-gradient(52deg,rgba(128,85,42,1)_0%,rgba(115,70,10,1)_59%,rgba(107,50,6,1)_100%)] text-white shadow-md shadow-[#73460a]/30 hover:brightness-110 hover:shadow-lg hover:shadow-[#73460a]/40 focus:ring-[#ab7c50]",
   secondary:
     "border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50",
   outline:

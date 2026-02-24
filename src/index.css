@@ -2,11 +2,15 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Light Mode (Default) */
   --color-primary: #0f172a;
   --color-primary-dark: #111827;
+
   --color-accent: #4a3728;
   --color-accent-hover: #3d2914;
   --color-accent-focus: #5c4033;
+
   --color-neutral-50: #f9fafb;
   --color-neutral-100: #f3f4f6;
   --color-neutral-300: #d1d5db;
@@ -14,6 +18,21 @@
   --color-neutral-900: #111827;
 }
 
+/* 🌙 Dark Mode Override */
+.dark {
+  --color-primary: #f3f4f6;
+  --color-primary-dark: #ffffff;
+
+  --color-accent: #ab7c50;
+  --color-accent-hover: #c89666;
+  --color-accent-focus: #e2b98b;
+
+  --color-neutral-50: #0f0f0f;
+  --color-neutral-100: #1a1a1a;
+  --color-neutral-300: #3a3a3a;
+  --color-neutral-600: #a3a3a3;
+  --color-neutral-900: #ffffff;
+}
 body {
   margin: 0;
   min-height: 100vh;

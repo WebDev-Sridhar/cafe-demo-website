@@ -2,47 +2,53 @@
 
 import { useState } from 'react'
 import { galleryFilters, galleryItems } from '../data/gallery'
+import { motion } from 'framer-motion'
 
 // Bento span pattern
 const BENTO_SPANS = [
-  'md:col-span-2 md:row-span-2', // hero
-  '',
-  '',
-  '',
-  '',
-  'md:col-span-2',               // wide
-  '',
-  '',
-  'md:row-span-2',               // tall
-  '',
-  'md:col-span-2',
-  '',
-  '',
-  '',
-  '',
-  'md:col-span-2',
-]
+  "md:col-span-2 md:row-span-2", // hero
+  "",
+  "",
+  "",
+  "",
+  "md:col-span-2",              // wide
+  "",
+  "",
+  "md:row-span-2",              // tall
+  "",
+];
 
-function getBentoSpan(index) {
-  return BENTO_SPANS[index % BENTO_SPANS.length] || ''
-}
+const getBentoSpan = (index) => {
+  if (index === 0) return "md:col-span-2 md:row-span-2"; // hero
+  if (index % 7 === 0) return "md:col-span-2";
+  if (index % 5 === 0) return "md:row-span-2";
+  return "";
+};
 
 function GalleryCard({ item, spanClass }) {
+          const fadeInUp = {
+  hidden: { opacity: 0, y: 80 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+}
   return (
-    <div
-      className={`group relative overflow-hidden rounded-2xl bg-neutral-200 shadow-sm transition-all duration-300 hover:shadow-lg ${spanClass}`}
+   <motion.div variants={fadeInUp}
+      className={`group relative overflow-hidden rounded-2xl bg-neutral-200 shadow-sm  hover:shadow-lg ${spanClass}`}
     >
       <img
         src={item.image}
         alt={item.caption}
-        className="h-full w-full object-cover transition duration-300 ease-out group-hover:scale-105"
+        className="h-full w-full object-cover ease-out transition duration-300 group-hover:scale-105  "
       />
       <div className="absolute inset-0 flex items-end bg-linear-to-t from-[#0F172A]/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <p className="p-4 text-sm font-medium text-white">
           {item.caption}
         </p>
       </div>
-    </div>
+            </motion.div>
   )
 }
 
@@ -53,6 +59,8 @@ export default function Gallery() {
     activeFilter === 'All'
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeFilter)
+
+
 
   return (
     <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24">
@@ -86,21 +94,29 @@ export default function Gallery() {
       </div>
 
       {/* Bento Grid Layout */}
-      <div
+            <motion.div
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    visible: {
+      transition: { staggerChildren: 0.2 }
+    }
+  }}
         key={activeFilter}
-        className="animate-fade-in-up mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 md:grid-cols-3 lg:grid-cols-4"
-        style={{
-          // gridAutoRows: '200px',
-        }}
+        className=" mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 md:grid-cols-3 lg:grid-cols-4"
       >
         {filtered.map((item, index) => (
+          
+        
           <GalleryCard
-            key={item.id}
+               key={item.id}
             item={item}
             spanClass={getBentoSpan(index)}
           />
+ 
         ))}
-      </div>
+      </motion.div>
 
       {filtered.length === 0 && (
         <p className="mt-12 text-center text-neutral-500">

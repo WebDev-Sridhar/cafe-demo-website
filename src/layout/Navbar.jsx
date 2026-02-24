@@ -36,7 +36,7 @@ export default function Navbar() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="text-[15px] font-medium text-neutral-600 transition-colors duration-200 hover:text-[#111827] hover:underline underline-offset-4"
+                  className="text-[15px] font-medium text-neutral-600 transition-colors duration-200 hover:text-[#111827] "
                 >
                   {label}
                 </Link>
@@ -56,6 +56,7 @@ export default function Navbar() {
               aria-label="Reserve a table"
             >
               Reserve
+
             </Button>
 
             {/* Mobile Hamburger */}
