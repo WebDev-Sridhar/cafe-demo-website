@@ -223,7 +223,7 @@ export default function Home() {
       {/* ============================================================
           EXPERIENCE — Full-width image band
           ============================================================ */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden mt-24">
         <img
           // src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"
           src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
