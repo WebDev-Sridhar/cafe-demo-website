@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const FOUNDER_IMAGE =
   "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?q=80&w=687&auto=format&fit=crop";
 const INTERIOR_IMAGES = [
-  "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1702677413541-ffc41d8c08b3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800&h=600&fit=crop",
   "https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=600&h=800&fit=crop",
   "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&h=600&fit=crop",
   "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=500&fit=crop",
@@ -19,7 +19,8 @@ export default function About() {
       {/* Hero */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden bg-[#1a0f0a]">
         <img
-          src={INTERIOR_IMAGES[0]}
+          // src={INTERIOR_IMAGES[0]}
+          src="https://images.unsplash.com/photo-1569251081532-cfb708f5f828?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />
@@ -63,7 +64,7 @@ export default function About() {
 
             <SectionReveal direction="right" delay={0.2}>
               <div className="grid grid-cols-2 gap-3">
-                {INTERIOR_IMAGES.slice(0, 4).map((src, i) => (
+                {INTERIOR_IMAGES.slice(0, 3).map((src, i) => (
                   <div
                     key={i}
                     className={`overflow-hidden rounded-2xl ${i === 0 ? 'col-span-2 aspect-[16/9]' : 'aspect-square'}`}
