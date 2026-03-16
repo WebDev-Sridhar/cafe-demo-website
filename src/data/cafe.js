@@ -20,42 +20,42 @@ export const cafe = {
 
 export const featuredMenu = [
   {
-    id: "1",
+    id: "c1",
     name: "Filter Kaapi",
     price: "₹ 80",
     image:
       "https://media.istockphoto.com/id/1426307970/photo/south-indian-filter-coffee-served-in-a-traditional-tumbler-or-cup-over-roasted-raw-beans.jpg?s=2048x2048&w=is&k=20&c=tWHdcnOmmsJRfqFgOkPMU77MyF-gifiUaXetWq6yHuM=",
   },
   {
-    id: "2",
+    id: "c2",
     name: "Cold Brew",
     price: "₹ 180",
     image:
       "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&h=400&fit=crop",
   },
   {
-    id: "3",
+    id: "s1",
     name: "Avocado Toast",
     price: "₹ 220",
     image:
       "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=600&h=400&fit=crop",
   },
   {
-    id: "4",
+    id: "s2",
     name: "Croissant",
     price: "₹ 120",
     image:
       "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&h=400&fit=crop",
   },
   {
-    id: "5",
+    id: "t1",
     name: "Masala Chai",
     price: "₹ 60",
     image:
       "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=600&h=400&fit=crop",
   },
   {
-    id: "6",
+    id: "d1",
     name: "Chocolate Brownie",
     price: "₹ 150",
     image:
