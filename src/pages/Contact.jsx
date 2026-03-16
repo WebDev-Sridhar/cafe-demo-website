@@ -2,25 +2,11 @@ import { useState } from 'react'
 import Button from '../components/Button'
 import { useReservation } from '../context/ReservationContext'
 import { cafe } from '../data/cafe'
+import SectionReveal from '../components/SectionReveal'
 
 const WHATSAPP_URL = `https://wa.me/${cafe.whatsapp.replace(/\+/g, '')}`
 const PHONE_URL = `tel:${cafe.phone.replace(/\s/g, '')}`
-
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-function SocialIcon({ href, label, children }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-100 text-neutral-600 transition-colors hover:bg-[#111827] hover:text-white"
-      aria-label={label}
-    >
-      {children}
-    </a>
-  )
-}
 
 export default function Contact() {
   const { openReservation } = useReservation()
@@ -33,7 +19,7 @@ export default function Contact() {
     const next = {}
     if (!fields.name?.trim()) next.name = 'Name is required'
     if (!fields.email?.trim()) next.email = 'Email is required'
-    else if (!EMAIL_REGEX.test(fields.email.trim())) next.email = 'Enter a valid email address'
+    else if (!EMAIL_REGEX.test(fields.email.trim())) next.email = 'Enter a valid email'
     if (!fields.message?.trim()) next.message = 'Message is required'
     return next
   }
@@ -62,223 +48,126 @@ export default function Contact() {
     setTouched({})
   }
 
+  const inputClass = (field) =>
+    `mt-1.5 h-12 w-full rounded-xl border bg-transparent px-4 text-[#1a0f0a] transition-all duration-300 placeholder:text-[#d4c4b0] focus:outline-none focus:ring-2 focus:ring-[#c8956c]/30 focus:border-[#c8956c] ${
+      touched[field] && errors[field] ? 'border-red-400' : 'border-[#d4c4b0]'
+    }`
+
   return (
-    <div className="mx-auto max-w-300 px-4 py-16 md:px-6 md:py-24 animate-fade-in-up">
-      <p className="text-sm font-medium uppercase tracking-widest text-neutral-500">
-        Contact
-      </p>
-      <h1 className="mt-2 text-3xl font-bold leading-tight text-[#111827] md:text-4xl lg:text-5xl">
-        Get in touch
-      </h1>
-      <p className="mt-4 max-w-[65ch] text-lg leading-relaxed text-neutral-600">
-        Reserve a table, ask a question, or just say hi. We’re here to help.
-      </p>
-      <div className="mt-6">
-        <Button
-          type="button"
-          variant="primary"
-          onClick={openReservation}
-          className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30"
-        >
-          Reserve a table
-        </Button>
-      </div>
+    <div className="pt-24 pb-16 md:pt-32 md:pb-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <SectionReveal>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+            Contact
+          </p>
+          <h1 className="font-serif mt-4 text-4xl font-light text-[#1a0f0a] md:text-5xl lg:text-6xl">
+            Get in Touch
+          </h1>
+          <p className="mt-4 max-w-[50ch] text-base text-[#8a7b6b]">
+            Reserve a table, ask a question, or just say hello.
+          </p>
+        </SectionReveal>
 
-      {/* Map + contact info + form */}
-      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-14">
-        {/* Left: Map + details */}
-        <div className="space-y-8 lg:col-span-2">
-          <div
-            id="reserve"
-            className="aspect-4/3 overflow-hidden rounded-2xl bg-neutral-200 md:aspect-video"
-          >
-            <div className="flex h-full w-full items-center justify-center text-neutral-500">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-              Visit & call
-            </p>
-            <p className="mt-3 font-medium text-[#111827]">{cafe.address}</p>
-            <a
-              href={PHONE_URL}
-              className="mt-2 block font-medium text-accent-focus hover:underline"
-            >
-              {cafe.phone}
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 block font-medium text-accent-focus hover:underline"
-            >
-              WhatsApp chat
-            </a>
-            <a
-              href={`mailto:${cafe.email}`}
-              className="mt-1 block font-medium text-accent-focus hover:underline"
-            >
-              {cafe.email}
-            </a>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-              Opening hours
-            </p>
-            <div className="mt-3 space-y-1 text-neutral-600">
-              <p><span className="font-medium text-[#111827]">Mon – Fri</span> {cafe.hours.weekdays}</p>
-              <p><span className="font-medium text-[#111827]">Sat – Sun</span> {cafe.hours.weekend}</p>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-neutral-500">
-              Follow us
-            </p>
-            <div className="mt-3 flex gap-3">
-              <SocialIcon href={cafe.social.instagram} label="Instagram">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm0 5.25a4.5 4.5 0 100 9 4.5 4.5 0 000-9zM12 7.875a3.375 3.375 0 110 6.75 3.375 3.375 0 010-6.75z" clipRule="evenodd" />
-                </svg>
-              </SocialIcon>
-              <SocialIcon href={cafe.social.facebook} label="Facebook">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                </svg>
-              </SocialIcon>
-              <SocialIcon href={cafe.social.twitter} label="X (Twitter)">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </SocialIcon>
-            </div>
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-          >
-            <Button variant="primary">Get Directions</Button>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Button variant="primary" onClick={openReservation}>Reserve a Table</Button>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline">WhatsApp Us</Button>
           </a>
         </div>
 
-        {/* Right: Contact form */}
-        <div className="lg:col-span-3">
-          <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-            <h2 className="text-xl font-semibold text-[#111827] md:text-2xl">
-              Send a message
-            </h2>
-            <p className="mt-2 text-neutral-600">
-              We’ll get back to you within a day.
-            </p>
+        <div className="mt-16 grid gap-12 lg:grid-cols-5 lg:gap-16">
+          {/* Left — Info */}
+          <SectionReveal className="space-y-10 lg:col-span-2">
+            <div className="overflow-hidden rounded-2xl aspect-video bg-[#f5ebe0]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin"
+                width="100%" height="100%" style={{ border: 0 }}
+                allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
 
-            {submitted ? (
-              <div className="mt-8 rounded-xl bg-accent/10 p-6 text-accent-hover">
-                <p className="font-semibold">Message sent.</p>
-                <p className="mt-1 text-sm">Thanks for reaching out. We’ll be in touch soon.</p>
+            <div className="space-y-6">
+              {[
+                { label: "Address", value: cafe.address },
+                { label: "Phone", value: cafe.phone, href: PHONE_URL },
+                { label: "Email", value: cafe.email, href: `mailto:${cafe.email}` },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c8956c]">{item.label}</p>
+                  {item.href ? (
+                    <a href={item.href} className="mt-1 block text-sm text-[#1a0f0a] hover:text-[#c8956c] transition-colors">{item.value}</a>
+                  ) : (
+                    <p className="mt-1 text-sm text-[#1a0f0a]">{item.value}</p>
+                  )}
+                </div>
+              ))}
+
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c8956c]">Hours</p>
+                <p className="mt-1 text-sm text-[#8a7b6b]">Mon &ndash; Fri: {cafe.hours.weekdays}</p>
+                <p className="text-sm text-[#8a7b6b]">Sat &ndash; Sun: {cafe.hours.weekend}</p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-[#111827]">
-                    Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
-                      touched.name && errors.name
-                        ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
-                        : 'border-neutral-300'
-                    }`}
-                    placeholder="Your name"
-                    autoComplete="name"
-                  />
-                  {touched.name && errors.name && (
-                    <p className="mt-1.5 text-sm text-red-500">{errors.name}</p>
-                  )}
-                </div>
+            </div>
 
-                <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-[#111827]">
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={`mt-1.5 h-12 w-full rounded-xl border px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
-                      touched.email && errors.email
-                        ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
-                        : 'border-neutral-300'
-                    }`}
-                    placeholder="you@example.com"
-                    autoComplete="email"
-                  />
-                  {touched.email && errors.email && (
-                    <p className="mt-1.5 text-sm text-red-500">{errors.email}</p>
-                  )}
-                </div>
+            <a href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79" target="_blank" rel="noopener noreferrer">
+              <Button variant="primary">Get Directions</Button>
+            </a>
+          </SectionReveal>
 
-                <div>
-                  <label htmlFor="contact-phone" className="block text-sm font-medium text-[#111827]">
-                    Phone
-                  </label>
-                  <input
-                    id="contact-phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="mt-1.5 h-12 w-full rounded-xl border border-neutral-300 px-4 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2"
-                    placeholder="+91 98765 43210"
-                    autoComplete="tel"
-                  />
-                </div>
+          {/* Right — Form */}
+          <SectionReveal direction="right" delay={0.2} className="lg:col-span-3">
+            <div className="rounded-3xl bg-white p-8 shadow-lg shadow-[#1a0f0a]/5 md:p-10">
+              <h2 className="font-serif text-2xl font-light text-[#1a0f0a]">
+                Send a Message
+              </h2>
+              <p className="mt-2 text-sm text-[#8a7b6b]">We&rsquo;ll get back to you within a day.</p>
 
-                <div>
-                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#111827]">
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    rows={4}
-                    className={`mt-1.5 w-full resize-y rounded-xl border px-4 py-3 text-[#111827] transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 ${
-                      touched.message && errors.message
-                        ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
-                        : 'border-neutral-300'
-                    }`}
-                    placeholder="How can we help?"
-                    autoComplete="off"
-                  />
-                  {touched.message && errors.message && (
-                    <p className="mt-1.5 text-sm text-red-500">{errors.message}</p>
-                  )}
+              {submitted ? (
+                <div className="mt-8 rounded-2xl bg-[#c8956c]/10 p-8 text-center">
+                  <p className="font-serif text-xl text-[#1a0f0a]">Message Sent</p>
+                  <p className="mt-2 text-sm text-[#8a7b6b]">Thanks for reaching out. We&rsquo;ll be in touch soon.</p>
                 </div>
-
-                <Button type="submit" variant="primary">
-                  Send message
-                </Button>
-              </form>
-            )}
-          </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  <div>
+                    <label htmlFor="contact-name" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#1a0f0a]">
+                      Name <span className="text-red-400">*</span>
+                    </label>
+                    <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} onBlur={handleBlur}
+                      className={inputClass('name')} placeholder="Your name" autoComplete="name" />
+                    {touched.name && errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#1a0f0a]">
+                      Email <span className="text-red-400">*</span>
+                    </label>
+                    <input id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} onBlur={handleBlur}
+                      className={inputClass('email')} placeholder="you@example.com" autoComplete="email" />
+                    {touched.email && errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-phone" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#1a0f0a]">Phone</label>
+                    <input id="contact-phone" name="phone" type="tel" value={form.phone} onChange={handleChange} onBlur={handleBlur}
+                      className="mt-1.5 h-12 w-full rounded-xl border border-[#d4c4b0] bg-transparent px-4 text-[#1a0f0a] transition-all duration-300 placeholder:text-[#d4c4b0] focus:outline-none focus:ring-2 focus:ring-[#c8956c]/30 focus:border-[#c8956c]"
+                      placeholder="+91 98765 43210" autoComplete="tel" />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#1a0f0a]">
+                      Message <span className="text-red-400">*</span>
+                    </label>
+                    <textarea id="contact-message" name="message" value={form.message} onChange={handleChange} onBlur={handleBlur}
+                      rows={4}
+                      className={`mt-1.5 w-full resize-y rounded-xl border bg-transparent px-4 py-3 text-[#1a0f0a] transition-all duration-300 placeholder:text-[#d4c4b0] focus:outline-none focus:ring-2 focus:ring-[#c8956c]/30 focus:border-[#c8956c] ${
+                        touched.message && errors.message ? 'border-red-400' : 'border-[#d4c4b0]'
+                      }`}
+                      placeholder="How can we help?" autoComplete="off" />
+                    {touched.message && errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
+                  </div>
+                  <Button type="submit" variant="primary">Send Message</Button>
+                </form>
+              )}
+            </div>
+          </SectionReveal>
         </div>
       </div>
 

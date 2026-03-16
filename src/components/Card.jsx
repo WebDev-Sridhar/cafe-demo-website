@@ -1,7 +1,7 @@
 export default function Card({ children, className = "", ...props }) {
   return (
     <div
-      className={`rounded-lg  p-2 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg md:p-8 ${className}`}
+      className={`bg-white rounded-2xl shadow-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#1a0f0a]/8 ${className}`}
       {...props}
     >
       {children}

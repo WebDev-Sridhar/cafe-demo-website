@@ -4,7 +4,8 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
     }
   }
 }
@@ -12,36 +13,36 @@ const container = {
 const child = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: "blur(8px)"
+    y: 60,
+    filter: "blur(10px)",
   },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1] // luxury cubic-bezier
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1],
     }
   }
 }
 
-export default function LuxuryText({ text, className }) {
+export default function LuxuryText({ text, className = "", as: Tag = "h1" }) {
   return (
     <motion.div
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`overflow-hidden ${className}`}
+      className={`overflow-hidden font-serif ${className}`}
     >
-      {text.split(" ").map((char, i) => (
+      {text.split(" ").map((word, i) => (
         <motion.span
           key={i}
           variants={child}
           className="inline-block"
         >
-       {char + "\u00A0"}
+          {word + "\u00A0"}
         </motion.span>
       ))}
     </motion.div>

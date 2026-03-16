@@ -1,282 +1,394 @@
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
-import Card from '../components/Card'
 import { useReservation } from '../context/ReservationContext'
-import { cafe, featuredMenu, galleryImages, reviews } from '../data/cafe'
+import { cafe, featuredMenu, reviews } from '../data/cafe'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import { motion } from 'framer-motion'
 import LuxuryText from "../components/LuxuryText"
+import FloatingBeans from "../components/FloatingBeans"
+import SectionReveal from "../components/SectionReveal"
+import TestimonialSlider from "../components/TestimonialSlider"
 
-
-// const HERO_BG = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920&q=80'
-const HERO_BG = 'https://plus.unsplash.com/premium_photo-1661875793803-92f4c8b6ae84?q=80&w=1119&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-
-function StarRating({ value }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${value} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <svg
-          key={star}
-          className="h-4 w-4 text-amber-400"
-          fill={star <= value ? 'currentColor' : 'none'}
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
-
-const WHATSAPP_ORDER = getWhatsAppUrl("Hi, I'd like to order from your menu. Can you share today's options?")
+const HERO_IMG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200&q=80'
+const ABOUT_IMG = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=80'
+const WHATSAPP_ORDER = getWhatsAppUrl("Hi, I'd like to order from your menu.")
 
 export default function Home() {
   const { openReservation } = useReservation()
-  const fadeInUp = {
-  hidden: { opacity: 0, y: 80 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-}
 
-
-  
   return (
-    <div className="animate-fade-in-up">
+    <div>
 
-      {/* 1. Hero */}
-      <section className="relative min-h-[85vh] md:min-h-[90vh]">
-      <div
-           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-           style={{ backgroundImage: `url(${HERO_BG})`}}
-            /> 
-        <div className="absolute inset-0 bg-[#0F172A]/75" />
-        <div className="relative mx-auto flex min-h-[85vh] max-w-300 flex-col justify-center px-4 py-20 md:min-h-[90vh] md:px-6 md:py-28">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#27b371]">
-            Premium cafe · Chennai
-          </p>
-       <LuxuryText
-  text={cafe.name}
-  className="max-w-[20ch] text-4xl font-bold leading-[1.12] tracking-tight text-white md:text-5xl lg:text-6xl"
-/>
-          <p className="mt-5 max-w-[35ch] text-lg leading-relaxed text-neutral-200 md:text-xl">
+      {/* ============================================================
+          HERO — Full-screen cinematic
+          ============================================================ */}
+      <section className="relative min-h-screen overflow-hidden bg-[#1a0f0a]">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0">
+          <img
+            src={HERO_IMG}
+            alt=""
+            className="h-full w-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0f0a]/60 via-[#1a0f0a]/30 to-[#1a0f0a]" />
+        </div>
+
+        <FloatingBeans className="opacity-30" />
+
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-[1200px] flex-col items-center justify-center px-6 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]"
+          >
+            Est. Madurai &mdash; Premium Coffee Experience
+          </motion.p>
+
+          <LuxuryText
+            text="Where Every Sip Tells a Story"
+            className="max-w-[16ch] text-4xl font-light leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[5.5rem]"
+          />
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="mt-8 max-w-[45ch] text-base leading-relaxed text-white/50 md:text-lg"
+          >
             {cafe.tagline}
-          </p>
-          <div className="mt-12 flex flex-wrap items-center gap-4">
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          >
             <Link to="/menu">
-              <Button variant="primary" className="px-7 py-3.5 text-lg shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/25">
-                View Menu
+              <Button variant="gold" className="px-10 py-4 text-sm">
+                Explore Menu
               </Button>
             </Link>
-            <a href={WHATSAPP_ORDER} target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary" className="border-white/40 bg-white/10 px-7 py-3.5 text-lg text-white hover:bg-white/20">
-                Order Now
-              </Button>
-            </a>
-            {/* <Button
-              type="button"
-              variant="ghost"
-              onClick={openReservation}
-              className="px-7 py-3.5 text-lg text-white hover:bg-white/10 hover:text-white"
+            <Button variant="outline-light" onClick={openReservation} className="px-10 py-4 text-sm">
+              Reserve a Table
+            </Button>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2"
             >
-              Reserve Table
-            </Button> */}
-            <a href="#location" className="hidden sm:inline-block">
-              <Button variant="ghost" className="px-7 py-3.5 text-lg text-white hover:bg-white/10 hover:text-white">
-                Visit Us
-              </Button>
-            </a>
-          </div>
-          <div className="mt-14 flex flex-wrap items-center gap-8">
-            <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 backdrop-blur-sm">
-              <span className="text-amber-400">★</span>
-              <span className="font-semibold text-white">{cafe.rating}</span>
-              <span className="text-sm text-neutral-300">({cafe.reviewCount} reviews)</span>
-            </div>
-            <div className="text-sm text-neutral-300">
-              <span className="font-medium text-white">Open today</span> · {cafe.hours.weekdays}
-            </div>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-white/30">Scroll</span>
+              <div className="h-10 w-px bg-gradient-to-b from-white/30 to-transparent" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          PHILOSOPHY — Horizontal split with large image
+          ============================================================ */}
+      <section className="bg-[#faf6f1]">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+          <div className="grid gap-16 md:grid-cols-2 items-center">
+            <SectionReveal direction="left">
+              <div className="relative">
+                <div className="aspect-[4/5] overflow-hidden rounded-3xl">
+                  <img src={ABOUT_IMG} alt="Coffee shop interior" className="h-full w-full object-cover" />
+                </div>
+                {/* Floating stats card */}
+                <div className="absolute -bottom-6 -right-4 md:-right-8 rounded-2xl bg-white p-6 shadow-2xl shadow-[#1a0f0a]/8">
+                  <p className="text-3xl font-serif font-light text-[#1a0f0a]">{cafe.reviewCount}+</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.15em] text-[#8a7b6b]">Happy Reviews</p>
+                  <div className="mt-2 flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-[#c8956c] text-sm">&#9733;</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </SectionReveal>
+
+            <SectionReveal direction="right" delay={0.2}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+                Our Philosophy
+              </p>
+              <h2 className="font-serif mt-4 text-3xl font-light leading-[1.15] text-[#1a0f0a] md:text-4xl lg:text-5xl">
+                Crafted with<br />Intention
+              </h2>
+              <p className="mt-6 max-w-[45ch] text-base leading-relaxed text-[#8a7b6b]">
+                We started in the heart of Avaniyapuram to bring you single-origin beans,
+                fresh bakes, and a place that feels like a second home. Every cup is brewed
+                with care — from bean selection to the final pour.
+              </p>
+              <div className="mt-8 flex items-center gap-8">
+                <div>
+                  <p className="text-2xl font-serif text-[#1a0f0a]">100%</p>
+                  <p className="text-xs uppercase tracking-wider text-[#8a7b6b]">Arabica Beans</p>
+                </div>
+                <div className="h-10 w-px bg-[#d4c4b0]" />
+                <div>
+                  <p className="text-2xl font-serif text-[#1a0f0a]">Fresh</p>
+                  <p className="text-xs uppercase tracking-wider text-[#8a7b6b]">Daily Roasted</p>
+                </div>
+                <div className="h-10 w-px bg-[#d4c4b0]" />
+                <div>
+                  <p className="text-2xl font-serif text-[#1a0f0a]">Local</p>
+                  <p className="text-xs uppercase tracking-wider text-[#8a7b6b]">From Madurai</p>
+                </div>
+              </div>
+              <div className="mt-10">
+                <Link to="/about">
+                  <Button variant="outline">Our Story</Button>
+                </Link>
+              </div>
+            </SectionReveal>
           </div>
         </div>
       </section>
 
-      {/* 2. About preview */}
-     <motion.section
-  variants={fadeInUp}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32"
->
-        <div className="mx-auto max-w-300 px-4 md:px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Our story
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
-          Handcrafted Coffee. A Space That Feels Like Home.
-          </h2>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-neutral-600">
-            We started in the heart of Nungambakkam to bring you single-origin beans, fresh bakes, and a place that feels like a second home. Every cup is brewed with care.
-          </p>
-          <div className="mt-8">
-            <Link to="/about">
-              <Button variant="outline">Read More</Button>
-            </Link>
-          </div>
+      {/* ============================================================
+          FEATURED MENU — Horizontal scroll cards
+          ============================================================ */}
+      <section className="bg-[#1a0f0a] py-24 md:py-32 overflow-hidden">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <SectionReveal>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+                  The Menu
+                </p>
+                <h2 className="font-serif mt-4 text-3xl font-light leading-tight text-white md:text-4xl lg:text-5xl">
+                  Featured Picks
+                </h2>
+              </div>
+              <Link to="/menu">
+                <Button variant="outline-light" className="text-xs">
+                  View Full Menu
+                </Button>
+              </Link>
+            </div>
+          </SectionReveal>
         </div>
-      </motion.section>
 
-      {/* 3. Featured menu */}
-      <section className="py-24 md:py-32 bg-[#f3f2f0] animate-fade-in-up" >
-        <div className="mx-auto max-w-300 px-4 md:px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Menu
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
-            Featured picks
-          </h2>
-        <motion.div
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={{
-    visible: {
-      transition: { staggerChildren: 0.2 }
-    }
-  }}
-  className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-6"
->
+        <div className="mt-14 px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+            className="flex gap-5 overflow-x-auto hide-scrollbar pb-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:max-w-[1200px] md:mx-auto"
+          >
             {featuredMenu.map((item) => (
-              <motion.div variants={fadeInUp} key={item.id}>
-              <Card  className="overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div className="aspect-4/3 overflow-hidden rounded-lg">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105"
-                  />
-                </div>
-                <div className="p-5 md:p-6 text-center">
-                  <h3 className="font-semibold text-[#111827]">{item.name}</h3>
-                  <p className="mt-1 text-lg font-medium text-accent">{item.price}</p>
-                </div>
-              </Card>
+              <motion.div
+                key={item.id}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+                }}
+                className="group min-w-[280px] snap-center md:min-w-0"
+              >
+                <Link to={`/menu/${item.id}`}>
+                  <div className="relative overflow-hidden rounded-2xl bg-[#2c1810]">
+                    <div className="aspect-[3/4] overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a0f0a] via-[#1a0f0a]/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-lg font-serif text-white">{item.name}</p>
+                      <p className="mt-1 text-sm font-medium text-[#c8956c]">{item.price}</p>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
-          <div className="mt-14 text-center">
-            <Link to="/menu">
-              <Button variant="outline" className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30">
-              Explore Today’s Menu →
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 4. Gallery preview */}
-      <section className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32" >
-        <div className="mx-auto max-w-300 px-4 md:px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Gallery
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
-            The vibe
-          </h2>
-          <div className="mt-14 grid grid-cols-2 gap-3 md:gap-4">
-            {galleryImages.map((src, i) => (
-              <div
-                key={i}
-                className="overflow-hidden   rounded-2xl bg-neutral-200 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg aspect-4/3"
-              >
-                <img
-                  src={src}
-                  alt=""
-                  className="h-full w-full object-cover transition duration-300 ease-out hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Link to="/gallery">
-              <Button variant="outline" className="transition-all duration-200 hover:-translate-y-0.5">
-                See full gallery
-            </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Reviews */}
-      <section className="py-24 md:py-32 bg-[#f3f2f0]">
-        <div className="mx-auto max-w-300 px-4 md:px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Reviews
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
-            What our guests say
-          </h2>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {reviews.map((review, i) => (
-              <Card key={i} className={`bg-white rounded-2xl p-8 shadow-lg ${i % 2 === 0 ? "animate-fade-in-left" : "animate-fade-in-right"}`}>
-                <StarRating value={review.rating} />
-                <p className="mt-4 leading-relaxed text-neutral-600">{review.text}</p>
-                <p className="mt-4 font-medium text-[#111827]">— {review.name}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Location */}
-      <section id="location" className="border-t border-neutral-100 bg-[#F9FAFB] py-24 md:py-32">
-        <div className="mx-auto max-w-300 px-4 md:px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Find us
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#111827] md:text-4xl">
-            Location & hours
-          </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-5">
-            <div className="aspect-4/3 overflow-hidden rounded-2xl bg-neutral-300 md:col-span-3">
-              <div className="flex h-full w-full items-center justify-center text-neutral-500">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-
+      {/* ============================================================
+          EXPERIENCE — Full-width image band
+          ============================================================ */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"
+          alt="Cafe experience"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1a0f0a]/50" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <SectionReveal direction="scale">
+            <div className="text-center px-6">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+                The Experience
+              </p>
+              <h2 className="font-serif mt-4 text-3xl font-light text-white md:text-5xl lg:text-6xl max-w-[20ch] mx-auto leading-[1.1]">
+                More Than Just Coffee
+              </h2>
+              <p className="mt-6 text-white/50 max-w-[40ch] mx-auto">
+                A calm, uncluttered space where time slows down and every moment is yours.
+              </p>
+              <div className="mt-8">
+                <Link to="/gallery">
+                  <Button variant="outline-light">
+                    View Gallery
+                  </Button>
+                </Link>
               </div>
             </div>
-            <div className="md:col-span-2">
-              <p className="font-medium text-[#111827]">{cafe.address}</p>
-              <a
-                href={`tel:${cafe.phone.replace(/\s/g, '')}`}
-                className="mt-4 inline-block font-medium text-accent hover:underline"
-              >
-                {cafe.phone}
-              </a>
-              <div className="mt-6 space-y-1 text-sm text-neutral-600">
-                <p><span className="font-medium text-[#111827]">Mon – Fri</span> {cafe.hours.weekdays}</p>
-                <p><span className="font-medium text-[#111827]">Sat – Sun</span> {cafe.hours.weekend}</p>
-              </div>
-              <a
-                href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-block"
-              >
-                <Button variant="primary" className="shadow-md shadow-accent/25 hover:shadow-lg hover:shadow-accent/30">
-                  Get Directions
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* ============================================================
+          TESTIMONIALS — Elegant slider
+          ============================================================ */}
+      <section className="bg-[#faf6f1] py-24 md:py-32">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <SectionReveal>
+            <div className="text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+                Testimonials
+              </p>
+              <h2 className="font-serif mt-4 text-3xl font-light text-[#1a0f0a] md:text-4xl">
+                Words from Our Guests
+              </h2>
+            </div>
+          </SectionReveal>
+          <div className="mt-14">
+            <TestimonialSlider reviews={reviews} />
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          RESERVATION CTA — Dramatic dark section
+          ============================================================ */}
+      <section className="relative bg-[#1a0f0a] py-28 md:py-36 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-[#c8956c]/30" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[#c8956c]/20" />
+        </div>
+        <SectionReveal direction="scale">
+          <div className="relative z-10 mx-auto max-w-[1200px] px-6 text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+              Reserve Your Spot
+            </p>
+            <h2 className="font-serif mt-6 text-4xl font-light text-white md:text-5xl lg:text-6xl leading-[1.1] max-w-[18ch] mx-auto">
+              Your Table is Waiting
+            </h2>
+            <p className="mx-auto mt-6 max-w-[45ch] text-white/40 text-base">
+              Experience the warmth of handcrafted coffee in a space designed for slow mornings and meaningful moments.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Button variant="gold" onClick={openReservation} className="px-10 py-4">
+                Reserve Now
+              </Button>
+              <a href={WHATSAPP_ORDER} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline-light" className="px-10 py-4">
+                  Order via WhatsApp
                 </Button>
               </a>
             </div>
           </div>
+        </SectionReveal>
+      </section>
+
+      {/* ============================================================
+          LOCATION — Clean minimal
+          ============================================================ */}
+      <section className="bg-[#faf6f1] py-24 md:py-32">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <SectionReveal>
+            <div className="text-center mb-14">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c8956c]">
+                Find Us
+              </p>
+              <h2 className="font-serif mt-4 text-3xl font-light text-[#1a0f0a] md:text-4xl">
+                Visit Our Space
+              </h2>
+            </div>
+          </SectionReveal>
+
+          <div className="grid gap-10 md:grid-cols-5">
+            <SectionReveal className="md:col-span-3">
+              <div className="aspect-video overflow-hidden rounded-3xl bg-[#f5ebe0] shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.055707502336!2d80.23631157481418!3d12.981012989251653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267237170378f%3A0x168c99f897f4a9d9!2sThe%20Brew%20Room!5e0!3m2!1sen!2sin!4v1740225180528!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </SectionReveal>
+
+            <SectionReveal direction="right" delay={0.2} className="md:col-span-2 flex flex-col justify-center">
+              <h3 className="font-serif text-xl text-[#1a0f0a]">{cafe.name}</h3>
+              <p className="mt-2 text-sm text-[#8a7b6b] leading-relaxed">{cafe.address}</p>
+
+              <div className="mt-8 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5ebe0]">
+                    <svg className="h-4 w-4 text-[#c8956c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[#8a7b6b]">Weekdays</p>
+                    <p className="text-sm font-medium text-[#1a0f0a]">{cafe.hours.weekdays}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5ebe0]">
+                    <svg className="h-4 w-4 text-[#c8956c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[#8a7b6b]">Weekends</p>
+                    <p className="text-sm font-medium text-[#1a0f0a]">{cafe.hours.weekend}</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={`tel:${cafe.phone.replace(/\s/g, '')}`}
+                className="mt-6 text-sm font-medium text-[#c8956c] hover:underline underline-offset-4"
+              >
+                {cafe.phone}
+              </a>
+
+              <div className="mt-8">
+                <a
+                  href="https://maps.app.goo.gl/eekFsyvvZNpFFMd79"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="primary">Get Directions</Button>
+                </a>
+              </div>
+            </SectionReveal>
+          </div>
         </div>
       </section>
 
-      {/* Spacer for sticky bar on mobile */}
       <div className="h-20 md:hidden" />
-      
     </div>
   )
 }

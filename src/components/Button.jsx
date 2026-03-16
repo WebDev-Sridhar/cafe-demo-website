@@ -1,25 +1,29 @@
 const variants = {
-primary:
-  "bg-[linear-gradient(52deg,rgba(128,85,42,1)_0%,rgba(115,70,10,1)_59%,rgba(107,50,6,1)_100%)] text-white shadow-md shadow-[#73460a]/30 hover:brightness-110 hover:shadow-lg hover:shadow-[#73460a]/40 focus:ring-[#ab7c50]",
+  primary:
+    "bg-[#1a0f0a] text-[#f5ebe0] shadow-lg shadow-[#1a0f0a]/20 hover:bg-[#2c1810] hover:shadow-xl hover:shadow-[#1a0f0a]/30",
   secondary:
-    "border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50",
+    "bg-[#c8956c] text-white shadow-md shadow-[#c8956c]/20 hover:bg-[#b8855c] hover:shadow-lg hover:shadow-[#c8956c]/30",
   outline:
-    "border border-[#4a3728] text-[#4a3728] hover:bg-[#4a3728]/5 focus:ring-[#5c4033]",
+    "border-2 border-[#1a0f0a] text-[#1a0f0a] hover:bg-[#1a0f0a] hover:text-[#f5ebe0]",
   ghost:
-    "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 focus:ring-neutral-400",
+    "text-[#5c4a3a] hover:text-[#1a0f0a] hover:bg-[#f5ebe0]",
+  "outline-light":
+    "border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50",
+  gold:
+    "bg-[linear-gradient(135deg,#c8956c,#d4a574,#c8956c)] text-white shadow-lg shadow-[#c8956c]/30 hover:shadow-xl hover:shadow-[#c8956c]/40",
 };
 
 export default function Button({
   children,
   variant = "primary",
   type = "button",
-  className='',
+  className = "",
   ...props
 }) {
   return (
     <button
       type={type}
-      className={`md:inline-flex items-center justify-center rounded-xl px-6 py-3 text-base font-bold transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 hover:scale-[1.03] active:scale-[0.99] ${variants[variant] ?? variants.primary} ${className}`}
+      className={`inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide uppercase transition-all duration-500 ease-out focus:outline-none focus:ring-2 focus:ring-[#c8956c]/50 focus:ring-offset-2 focus:ring-offset-[#faf6f1] disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98] ${variants[variant] ?? variants.primary} ${className}`}
       {...props}
     >
       {children}

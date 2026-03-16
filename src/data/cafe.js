@@ -1,15 +1,15 @@
 export const cafe = {
-  name: "The Brew Room",
-  tagline: "Every cup brewed with care and community.",
-  address: "12, Khader Nawaz Khan Rd, Nungambakkam, Chennai 600 034",
-  phone: "+91 7904224746",
+  name: "STAR COFFEE HOUSE",
+  tagline: "The Rich Aroma & Great Taste in Every Sip!",
+  address: "12, By Pass Rd, Avaniyapuram, Madurai 625012",
+  phone: "+91 7904224744",
   whatsapp: "+916380614150",
-  email: "sridhartamilselvam22@gmail.com",
+  email: "starcoffeehouse@gmail.com",
   hours: {
     weekdays: "8:00 AM – 10:00 PM",
     weekend: "8:00 AM – 11:00 PM",
   },
-  rating: 4.8,
+  rating: 5,
   reviewCount: 324,
   social: {
     instagram: "https://instagram.com/thebrewroom",
