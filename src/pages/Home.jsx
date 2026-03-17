@@ -10,7 +10,7 @@ import SectionReveal from "../components/SectionReveal"
 import TestimonialSlider from "../components/TestimonialSlider"
 
 const HERO_IMG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200&q=80'
-// const HERO_IMG = 'https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+// const HERO_IMG = 'https://images.unsplash.com/photo-1509785307050-d4066910ec1e?q=80&w=1028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1200&q=80'
 const ABOUT_IMG = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=80'
 const WHATSAPP_ORDER = getWhatsAppUrl("Hi, I'd like to order from your menu.")
 
