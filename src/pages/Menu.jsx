@@ -1,13 +1,23 @@
 import { useState } from 'react'
-import Button from '../components/Button'
 import { menuCategories, menuItems } from '../data/menu'
-import { getWhatsAppUrl, getOrderMessage } from '../utils/whatsapp'
+import { useCart } from '../context/CartContext'
+import { ShoppingBag, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SectionReveal from '../components/SectionReveal'
 
 function MenuItemCard({ item }) {
-  const orderUrl = getWhatsAppUrl(getOrderMessage(item.name))
+  const { addItem, items } = useCart()
+  const [added, setAdded] = useState(false)
+  const inCart = items.some((i) => i.id === item.id)
+
+  const handleAddToCart = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addItem(item)
+    setAdded(true)
+    setTimeout(() => setAdded(false), 1500)
+  }
 
   return (
     <Link to={`/menu/${item.id}`} className="group block">
@@ -41,17 +51,30 @@ function MenuItemCard({ item }) {
             </span>
           </div>
 
-          <a
-            href={orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Button variant="primary" className="text-xs px-5 py-2.5">
-              Order Now
-            </Button>
-          </a>
+          <div className="mt-4 flex items-center gap-2">
+            <button
+              onClick={handleAddToCart}
+              className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-all duration-500 ${
+                added
+                  ? "bg-green-600 text-white shadow-md"
+                  : inCart
+                    ? "bg-[#f5ebe0] text-[#1a0f0a] hover:bg-[#1a0f0a] hover:text-[#f5ebe0]"
+                    : "bg-[#1a0f0a] text-[#f5ebe0] shadow-lg shadow-[#1a0f0a]/20 hover:bg-[#2c1810]"
+              }`}
+            >
+              {added ? (
+                <>
+                  <Check size={14} strokeWidth={2} />
+                  Added
+                </>
+              ) : (
+                <>
+                  <ShoppingBag size={14} strokeWidth={1.5} />
+                  {inCart ? "Add More" : "Add to Cart"}
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </Link>

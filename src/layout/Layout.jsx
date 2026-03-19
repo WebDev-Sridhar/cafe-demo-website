@@ -4,6 +4,7 @@ import Footer from './Footer'
 import StickyBar from '../components/StickyBar'
 import ReservationModal from '../components/ReservationModal'
 import { ReservationProvider, useReservation } from '../context/ReservationContext'
+import { CartProvider } from '../context/CartContext'
 import ScrollToTop from "../components/ScrollToTop"
 
 function ReservationModalWrapper() {
@@ -14,18 +15,20 @@ function ReservationModalWrapper() {
 export default function Layout() {
   return (
 
-    <ReservationProvider>
-      <ScrollToTop />
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <StickyBar />
-        <ReservationModalWrapper />
-      </div>
-    </ReservationProvider>
+    <CartProvider>
+      <ReservationProvider>
+        <ScrollToTop />
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+          <StickyBar />
+          <ReservationModalWrapper />
+        </div>
+      </ReservationProvider>
+    </CartProvider>
 
   )
 }

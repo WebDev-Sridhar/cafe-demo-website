@@ -3,11 +3,21 @@ import { useState } from 'react'
 import { menuItems } from '../data/menu'
 import Button from '../components/Button'
 import SectionReveal from '../components/SectionReveal'
+import { useCart } from '../context/CartContext'
+import { ShoppingBag, Check } from 'lucide-react'
 
 export default function ProductDetail() {
   const { id } = useParams()
   const product = menuItems.find((item) => item.id === id)
   const [quantity, setQuantity] = useState(1)
+  const { addItem } = useCart()
+  const [added, setAdded] = useState(false)
+
+  const handleAddToCart = () => {
+    addItem(product, quantity)
+    setAdded(true)
+    setTimeout(() => setAdded(false), 1500)
+  }
 
   if (!product) {
     return (
@@ -87,9 +97,29 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <button
+                  onClick={handleAddToCart}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold uppercase tracking-wide transition-all duration-500 ${
+                    added
+                      ? "bg-green-600 text-white shadow-lg"
+                      : "bg-[#1a0f0a] text-[#f5ebe0] shadow-lg shadow-[#1a0f0a]/20 hover:bg-[#2c1810] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  }`}
+                >
+                  {added ? (
+                    <>
+                      <Check size={16} strokeWidth={2} />
+                      Added to Cart
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag size={16} strokeWidth={1.5} />
+                      Add to Cart
+                    </>
+                  )}
+                </button>
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <Button variant="primary" className="w-full md:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto">
                     Order on WhatsApp
                   </Button>
                 </a>

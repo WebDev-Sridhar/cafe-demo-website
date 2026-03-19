@@ -44,7 +44,6 @@ export default function ReservationModal({ isOpen, onClose }) {
   });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [submitted, setSubmitted] = useState(false);
 
   const validate = (fields = form) => {
     const next = {};
@@ -85,83 +84,29 @@ export default function ReservationModal({ isOpen, onClose }) {
     const nextErrors = validate();
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
-    setSubmitted(true);
+
+    const url = getWhatsAppUrl(
+      getReserveMessage({
+        date: form.date,
+        time: form.time,
+        guests: form.guests,
+        name: form.name,
+        phone: form.phone,
+      })
+    );
+    window.open(url, "_blank", "noopener,noreferrer");
+    handleClose();
   };
 
   const handleClose = () => {
-    setSubmitted(false);
     setForm({ date: "", time: "", guests: 2, name: "", phone: "" });
     setErrors({});
     setTouched({});
     onClose();
   };
 
-  const whatsappUrl = submitted
-    ? getWhatsAppUrl(
-        getReserveMessage({
-          date: form.date,
-          time: form.time,
-          guests: form.guests,
-          name: form.name,
-          phone: form.phone,
-        }),
-      )
-    : null;
-
-  const formatDateForDisplay = (d) => {
-    if (!d) return "";
-    const [y, m, day] = d.split("-");
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    return `${day} ${months[Number(m) - 1]} ${y}`;
-  };
-
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Reserve a table">
-      {submitted ? (
-        <div className="space-y-6">
-          <div className="rounded-xl bg-accent/10p-5 text-accent-hover">
-            <p className="font-semibold">Request received</p>
-            <p className="mt-1 text-sm">
-              We’ll confirm your table shortly. For instant confirmation, send
-              the details via WhatsApp.
-            </p>
-          </div>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Button variant="primary" className="w-full">
-              Confirm via WhatsApp
-            </Button>
-          </a>
-          <p className="text-center text-sm text-neutral-500">
-            {formatDateForDisplay(form.date)} at {form.time} · {form.guests}{" "}
-            guest{form.guests !== 1 ? "s" : ""}
-          </p>
-          <button
-            type="button"
-            onClick={handleClose}
-            className="w-full text-center text-sm font-medium text-neutral-600 underline hover:text-[#111827]"
-          >
-            Close
-          </button>
-        </div>
-      ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
@@ -297,7 +242,6 @@ export default function ReservationModal({ isOpen, onClose }) {
             Request reservation
           </Button>
         </form>
-      )}
     </Modal>
   );
 }

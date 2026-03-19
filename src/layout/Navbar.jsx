@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ShoppingBag } from "lucide-react"
 import { useReservation } from "../context/ReservationContext"
+import { useCart } from "../context/CartContext"
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -13,6 +14,7 @@ const navLinks = [
 
 export default function Navbar() {
   const { openReservation } = useReservation()
+  const { totalItems } = useCart()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
@@ -29,7 +31,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ease-out ${
           scrolled
             ? "bg-[#faf6f1]/90 backdrop-blur-2xl shadow-sm shadow-[#1a0f0a]/5 py-3"
-            : "bg-transparent py-5"
+            : "bg-[#faf6f1] py-5"
         }`}
       >
         <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between px-6">
@@ -66,7 +68,20 @@ export default function Navbar() {
           </ul>
 
           {/* Right Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <Link
+              to="/cart"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#1a0f0a]/5 text-[#1a0f0a] transition-all duration-300 hover:bg-[#1a0f0a]/10"
+              aria-label="Cart"
+            >
+              <ShoppingBag size={18} strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#c8956c] text-[10px] font-bold text-white shadow-sm">
+                  {totalItems > 9 ? "9+" : totalItems}
+                </span>
+              )}
+            </Link>
+
             <button
               type="button"
               onClick={openReservation}

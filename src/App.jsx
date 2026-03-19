@@ -6,6 +6,7 @@ import About from './pages/About'
 import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 import ProductDetail from './pages/ProductDetail'
+import Cart from './pages/Cart'
 
 
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: 'gallery', element: <Gallery /> },
       { path: 'contact', element: <Contact /> },
       { path: 'menu/:id', element: <ProductDetail /> },
+      { path: 'cart', element: <Cart /> },
     ],
   },
 ])
